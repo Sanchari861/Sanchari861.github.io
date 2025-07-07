@@ -33,6 +33,7 @@
     background-color: #D8BFD8;
     padding: 20px 30px;
     color: #3B0066;
+    text-align: center; /* Centered interests as you requested */
   }
   section#interests h2 {
     margin-top: 0;
@@ -40,8 +41,10 @@
   section#interests ul {
     list-style: disc inside;
     padding-left: 0;
-    margin: 0;
+    margin: 0 auto;
     font-weight: 600;
+    display: inline-block; /* To keep the ul width constrained and centered */
+    text-align: left; /* Keep bullet points left aligned */
   }
   nav.project-nav {
     background-color: #BA55D3;
@@ -138,20 +141,20 @@
 </section>
 
 <nav class="project-nav" aria-label="Project navigation">
-  <button class="active" data-project="0">Project 1</button>
-  <button data-project="1">Project 2</button>
-  <button data-project="2">Project 3</button>
-  <button data-project="3">Project 4</button>
-  <button data-project="4">Project 5</button>
-  <button data-project="5">Project 6</button>
+  <button class="active" data-project="0" aria-pressed="true">Project 1</button>
+  <button data-project="1" aria-pressed="false">Project 2</button>
+  <button data-project="2" aria-pressed="false">Project 3</button>
+  <button data-project="3" aria-pressed="false">Project 4</button>
+  <button data-project="4" aria-pressed="false">Project 5</button>
+  <button data-project="5" aria-pressed="false">Project 6</button>
 </nav>
 
 <main>
   <section id="projectEmbed">
-    <iframe src="https://academy.cs.cmu.edu/sharing/maroonBird441906/embed" title="Project 1 embed"></iframe>
+    <iframe src="https://academy.cs.cmu.edu/sharing/maroonBird441906/embed" title="Unit 1: Global Scholar embed"></iframe>
   </section>
   <section id="projectDescription">
-    <h2>Project 1: Global Scholar</h2>
+    <h2>Unit 1: Global Scholar</h2>
     <p>This is the first project I completed at the end of Unit 1, and it was to test our skills in coding lines of basic Python. I was paired with a classmate, and we divided the work evenly. I coded the "Climate Action" and "Life Below Water" sections, which included all the different types of code to create the image, as well as the emblem in the center. Concepts I learned in this unit included creating shapes, learning different properties like fill, border, opacity, roundness, and more. I also learned about the basics of coding on CMU like how inspector and autochecker works.</p>
     <h3>Concepts Learned</h3>
     <ul>
@@ -180,7 +183,7 @@ Polygon(124,109,129,119,127,132,116,133,108,127,101,123,107,117,113,109,117,102,
 <script>
   const projects = [
     {
-      title: "Project 1: Global Scholar",
+      title: "Unit 1: Global Scholar",
       embedSrc: "https://academy.cs.cmu.edu/sharing/maroonBird441906/embed",
       description: `
         <p>This is the first project I completed at the end of Unit 1, and it was to test our skills in coding lines of basic Python. I was paired with a classmate, and we divided the work evenly. I coded the "Climate Action" and "Life Below Water" sections, which included all the different types of code to create the image, as well as the emblem in the center. Concepts I learned in this unit included creating shapes, learning different properties like fill, border, opacity, roundness, and more. I also learned about the basics of coding on CMU like how inspector and autochecker works.</p>
@@ -203,6 +206,7 @@ Polygon(78,101,86,98,97,94,103,99,101,107,88,106,80,108,83,118,69,124,70,112,
 Polygon(124,109,129,119,127,132,116,133,108,127,101,123,107,117,113,109,117,102,123,108, 
     fill=gradient('snow','white', start='center'), opacity=90)`
     },
+    // The rest of projects here, unchanged...
     {
       title: "Project 2: [Your Project Title]",
       embedSrc: "about:blank",
@@ -244,10 +248,14 @@ function example() {
 
   navButtons.forEach(button => {
     button.addEventListener('click', () => {
-      // Remove active from all buttons
-      navButtons.forEach(btn => btn.classList.remove('active'));
-      // Add active to clicked button
+      // Remove active and aria-pressed from all buttons
+      navButtons.forEach(btn => {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-pressed', 'false');
+      });
+      // Add active and aria-pressed true to clicked button
       button.classList.add('active');
+      button.setAttribute('aria-pressed', 'true');
 
       const projectIndex = parseInt(button.getAttribute('data-project'));
       const project = projects[projectIndex];
@@ -269,3 +277,4 @@ function example() {
 
 </body>
 </html>
+
