@@ -5,80 +5,134 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sanchari's Portfolio</title>
   <style>
-    /* General Reset and Styling */
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #E6E6FA; /* lavender background */
-      color: #4B0082; /* dark indigo for text */
-      margin: 0;
-      padding: 0 20px;
+      background-color: #E6E6FA; /* lavender */
+      color: #4B0082;
+      margin: 0; padding: 0 20px;
       line-height: 1.6;
     }
-
     header {
       text-align: center;
-      padding: 40px 20px 20px 20px;
-      border-bottom: 2px solid #9370DB; /* medium lavender */
+      padding: 40px 20px 20px;
+      border-bottom: 2px solid #9370DB;
     }
-
+    header img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #9370DB;
+      margin-bottom: 15px;
+    }
     h1 {
       margin: 0;
       font-size: 3em;
-      font-weight: 700;
     }
-
     h2 {
-      margin-top: 10px;
+      margin-top: 8px;
       font-weight: 400;
       font-style: italic;
-      color: #6A5ACD; /* slate blue */
+      color: #6A5ACD;
     }
-
-    main {
-      max-width: 900px;
-      margin: 40px auto;
-      background-color: #F8F8FF; /* ghost white for content background */
-      border-radius: 10px;
-      padding: 30px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-
-    iframe {
-      display: block;
+    section.interests {
+      max-width: 700px;
       margin: 30px auto;
-      border: none;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(75,0,130,0.3);
+      background-color: #F8F8FF;
+      padding: 20px 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      color: #483D8B;
     }
-
+    section.projects {
+      max-width: 700px;
+      margin: 40px auto 60px;
+    }
+    section.projects h3 {
+      color: #6A5ACD;
+      border-bottom: 2px solid #9370DB;
+      padding-bottom: 8px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    ul.project-list {
+      list-style: none;
+      padding: 0;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    ul.project-list li {
+      margin: 15px 0;
+      padding: 12px 15px;
+      background: #F0E6FF;
+      border-radius: 10px;
+      border: 1px solid #B0A8E0;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    ul.project-list li:hover {
+      background: #D8CCFF;
+    }
+    ul.project-list li a {
+      color: #4B0082;
+      text-decoration: none;
+      display: block;
+    }
     footer {
       text-align: center;
       padding: 20px 10px;
       font-size: 0.9em;
       color: #7B68EE;
+      margin-bottom: 30px;
+    }
+    @media (max-width: 600px) {
+      header img {
+        width: 120px;
+        height: 120px;
+      }
+      h1 {
+        font-size: 2.2em;
+      }
+      section.interests, section.projects {
+        margin: 20px auto;
+        padding: 15px 20px;
+      }
+      ul.project-list li {
+        font-size: 1em;
+      }
     }
   </style>
 </head>
 <body>
+
   <header>
+    <img src="https://i.pravatar.cc/150?img=32" alt="Professional picture of Sanchari" />
     <h1>Sanchari's Portfolio</h1>
     <h2>From canvas to court to chords—an artist in motion</h2>
   </header>
 
-  <main>
-    <iframe 
-      width="410" 
-      height="460" 
-      src="https://academy.cs.cmu.edu/sharing/maroonBird441906/embed" 
-      title="Sanchari's Embedded Content"
-      loading="lazy"
-      >
-    </iframe>
-  </main>
+  <section class="interests">
+    <h3>Interests</h3>
+    <p>Painting (especially watercolor), violin, badminton, psychology, and biomedical science. I enjoy exploring the intersection of creativity and science, and bring that perspective into my projects.</p>
+  </section>
+
+  <section class="projects">
+    <h3>Projects</h3>
+    <ul class="project-list">
+      <li><a href="project1.html">Project 1: Maroon Bird (CMU Digital Project)</a></li>
+      <li><a href="project2.html">Project 2: [Project Title]</a></li>
+      <li><a href="project3.html">Project 3: [Project Title]</a></li>
+      <li><a href="project4.html">Project 4: [Project Title]</a></li>
+      <li><a href="project5.html">Project 5: [Project Title]</a></li>
+      <li><a href="project6.html">Project 6: [Project Title]</a></li>
+    </ul>
+  </section>
 
   <footer>
     &copy; 2025 Sanchari. All rights reserved.
   </footer>
+
 </body>
 </html>
 
