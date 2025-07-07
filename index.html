@@ -1,138 +1,332 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sanchari's Portfolio</title>
-  <style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sanchari's Portfolio</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #E6E6FA; /* lavender */
+    color: #4B0082;
+    margin: 0;
+    display: flex;
+    min-height: 100vh;
+  }
+  /* Sidebar for personal info */
+  aside {
+    background-color: #9370DB;
+    color: white;
+    width: 280px;
+    padding: 30px 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  aside img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 3px solid white;
+  }
+  aside h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    text-align: center;
+  }
+  aside p.tagline {
+    font-style: italic;
+    margin: 10px 0 20px 0;
+    text-align: center;
+  }
+  aside h3 {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid white;
+    width: 100%;
+    text-align: center;
+  }
+  aside ul {
+    list-style: none;
+    padding-left: 0;
+    text-align: center;
+  }
+  aside ul li {
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  /* Main content */
+  main {
+    flex-grow: 1;
+    background-color: #F8F8FF;
+    padding: 40px 50px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Projects list nav */
+  nav.project-nav {
+    margin-bottom: 30px;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+  nav.project-nav button {
+    background-color: #D8BFD8;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #4B0082;
+    transition: background-color 0.3s ease;
+  }
+  nav.project-nav button.active,
+  nav.project-nav button:hover {
+    background-color: #9370DB;
+    color: white;
+  }
+
+  /* Project display */
+  section.project-display {
+    flex-grow: 1;
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  section.project-embed {
+    flex: 1 1 450px;
+    min-width: 320px;
+  }
+  section.project-embed iframe {
+    width: 100%;
+    height: 400px;
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 4px 10px rgba(75, 0, 130, 0.25);
+  }
+  section.project-description {
+    flex: 1 1 400px;
+    min-width: 320px;
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 3px 8px rgba(75, 0, 130, 0.15);
+    overflow-y: auto;
+    max-height: 400px;
+  }
+  section.project-description h2 {
+    margin-top: 0;
+    color: #4B0082;
+  }
+  section.project-description h3 {
+    margin-bottom: 8px;
+    color: #6A5ACD;
+  }
+  section.project-description pre {
+    background: #eee;
+    border-radius: 8px;
+    padding: 15px;
+    overflow-x: auto;
+    font-size: 0.9em;
+    color: #333;
+  }
+
+  /* Responsive */
+  @media(max-width: 900px) {
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #E6E6FA; /* lavender */
-      color: #4B0082;
-      margin: 0; padding: 0 20px;
-      line-height: 1.6;
+      flex-direction: column;
     }
-    header {
-      text-align: center;
-      padding: 40px 20px 20px;
-      border-bottom: 2px solid #9370DB;
-    }
-    header img {
-      width: 150px;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 3px solid #9370DB;
-      margin-bottom: 15px;
-    }
-    h1 {
-      margin: 0;
-      font-size: 3em;
-    }
-    h2 {
-      margin-top: 8px;
-      font-weight: 400;
-      font-style: italic;
-      color: #6A5ACD;
-    }
-    section.interests {
-      max-width: 700px;
-      margin: 30px auto;
-      background-color: #F8F8FF;
-      padding: 20px 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      color: #483D8B;
-    }
-    section.projects {
-      max-width: 700px;
-      margin: 40px auto 60px;
-    }
-    section.projects h3 {
-      color: #6A5ACD;
-      border-bottom: 2px solid #9370DB;
-      padding-bottom: 8px;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-    ul.project-list {
-      list-style: none;
-      padding: 0;
-      max-width: 500px;
-      margin: 0 auto;
-    }
-    ul.project-list li {
-      margin: 15px 0;
-      padding: 12px 15px;
-      background: #F0E6FF;
-      border-radius: 10px;
-      border: 1px solid #B0A8E0;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    ul.project-list li:hover {
-      background: #D8CCFF;
-    }
-    ul.project-list li a {
-      color: #4B0082;
-      text-decoration: none;
-      display: block;
-    }
-    footer {
-      text-align: center;
+    aside {
+      width: 100%;
+      flex-direction: row;
+      justify-content: center;
       padding: 20px 10px;
-      font-size: 0.9em;
-      color: #7B68EE;
-      margin-bottom: 30px;
+      gap: 30px;
     }
-    @media (max-width: 600px) {
-      header img {
-        width: 120px;
-        height: 120px;
-      }
-      h1 {
-        font-size: 2.2em;
-      }
-      section.interests, section.projects {
-        margin: 20px auto;
-        padding: 15px 20px;
-      }
-      ul.project-list li {
-        font-size: 1em;
-      }
+    aside img {
+      width: 120px;
+      height: 120px;
     }
-  </style>
+    main {
+      padding: 20px;
+    }
+    section.project-display {
+      flex-direction: column;
+      max-height: none;
+    }
+    section.project-description {
+      max-height: none;
+    }
+  }
+</style>
 </head>
 <body>
 
-  <header>
-    <img src="https://i.pravatar.cc/150?img=32" alt="Professional picture of Sanchari" />
-    <h1>Sanchari's Portfolio</h1>
-    <h2>From canvas to court to chords—an artist in motion</h2>
-  </header>
+<aside>
+  <img src="https://i.pravatar.cc/160?u=sanchari" alt="Professional photo of Sanchari" />
+  <div>
+    <h1>Sanchari</h1>
+    <p class="tagline">From canvas to court to chords—an artist in motion</p>
 
-  <section class="interests">
     <h3>Interests</h3>
-    <p>Painting (especially watercolor), violin, badminton, psychology, and biomedical science. I enjoy exploring the intersection of creativity and science, and bring that perspective into my projects.</p>
-  </section>
-
-  <section class="projects">
-    <h3>Projects</h3>
-    <ul class="project-list">
-      <li><a href="project1.html">Project 1: Maroon Bird (CMU Digital Project)</a></li>
-      <li><a href="project2.html">Project 2: [Project Title]</a></li>
-      <li><a href="project3.html">Project 3: [Project Title]</a></li>
-      <li><a href="project4.html">Project 4: [Project Title]</a></li>
-      <li><a href="project5.html">Project 5: [Project Title]</a></li>
-      <li><a href="project6.html">Project 6: [Project Title]</a></li>
+    <ul>
+      <li>Painting (Watercolor)</li>
+      <li>Violin</li>
+      <li>Badminton</li>
+      <li>Psychology</li>
+      <li>Biomedical Science</li>
     </ul>
-  </section>
+  </div>
+</aside>
 
-  <footer>
-    &copy; 2025 Sanchari. All rights reserved.
-  </footer>
+<main>
+  <nav class="project-nav" aria-label="Project navigation">
+    <button class="active" data-project="0">Project 1</button>
+    <button data-project="1">Project 2</button>
+    <button data-project="2">Project 3</button>
+    <button data-project="3">Project 4</button>
+    <button data-project="4">Project 5</button>
+    <button data-project="5">Project 6</button>
+  </nav>
+
+  <section class="project-display">
+    <div class="project-embed" id="projectEmbed">
+      <!-- Embed iframe here -->
+      <iframe src="https://academy.cs.cmu.edu/sharing/maroonBird441906/embed" title="Project 1 embed"></iframe>
+    </div>
+
+    <div class="project-description" id="projectDescription">
+      <h2>Project 1: Maroon Bird Splashscreen</h2>
+      <p>This project involved creating a splash screen animation using web technologies. I learned about animation timing, layering, and UI transitions.</p>
+      <h3>Concepts Learned</h3>
+      <ul>
+        <li>CSS animations</li>
+        <li>HTML5 canvas basics</li>
+        <li>User experience design</li>
+      </ul>
+      <h3>Sample Code</h3>
+      <pre>
+// Simple animation example
+const canvas = document.getElementById('myCanvas');
+const ctx = canvas.getContext('2d');
+
+let x = 0;
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = 'maroon';
+  ctx.fillRect(x, 50, 100, 100);
+  x += 2;
+  if(x > canvas.width) x = 0;
+  requestAnimationFrame(animate);
+}
+animate();
+      </pre>
+    </div>
+  </section>
+</main>
+
+<script>
+  const projects = [
+    {
+      title: "Project 1: Maroon Bird Splashscreen",
+      embedSrc: "https://academy.cs.cmu.edu/sharing/maroonBird441906/embed",
+      description: `
+        <p>This project involved creating a splash screen animation using web technologies. I learned about animation timing, layering, and UI transitions.</p>
+        <h3>Concepts Learned</h3>
+        <ul>
+          <li>CSS animations</li>
+          <li>HTML5 canvas basics</li>
+          <li>User experience design</li>
+        </ul>`,
+      code: `// Simple animation example
+const canvas = document.getElementById('myCanvas');
+const ctx = canvas.getContext('2d');
+
+let x = 0;
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = 'maroon';
+  ctx.fillRect(x, 50, 100, 100);
+  x += 2;
+  if(x > canvas.width) x = 0;
+  requestAnimationFrame(animate);
+}
+animate();`
+    },
+    {
+      title: "Project 2: [Your Project Title]",
+      embedSrc: "about:blank",
+      description: `
+        <p>Description for project 2 goes here.</p>
+        <h3>Concepts Learned</h3>
+        <ul>
+          <li>Example concept 1</li>
+          <li>Example concept 2</li>
+        </ul>`,
+      code: `// Sample code snippet for project 2
+function example() {
+  console.log('Hello, project 2!');
+}`
+    },
+    {
+      title: "Project 3: [Your Project Title]",
+      embedSrc: "about:blank",
+      description: `<p>Description for project 3.</p>`,
+      code: `// Sample code snippet`
+    },
+    {
+      title: "Project 4: [Your Project Title]",
+      embedSrc: "about:blank",
+      description: `<p>Description for project 4.</p>`,
+      code: `// Sample code snippet`
+    },
+    {
+      title: "Project 5: [Your Project Title]",
+      embedSrc: "about:blank",
+      description: `<p>Description for project 5.</p>`,
+      code: `// Sample code snippet`
+    },
+    {
+      title: "Project 6: [Your Project Title]",
+      embedSrc: "about:blank",
+      description: `<p>Description for project 6.</p>`,
+      code: `// Sample code snippet`
+    }
+  ];
+
+  const navButtons = document.querySelectorAll('nav.project-nav button');
+  const embedContainer = document.getElementById('projectEmbed');
+  const descContainer = document.getElementById('projectDescription');
+
+  navButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Remove active class from all buttons
+      navButtons.forEach(btn => btn.classList.remove('active'));
+      // Add active to clicked button
+      button.classList.add('active');
+
+      const index = button.getAttribute('data-project');
+      const project = projects[index];
+
+      // Update iframe embed
+      embedContainer.innerHTML = `<iframe src="${project.embedSrc}" title="${project.title} embed"></iframe>`;
+
+      // Update description + code
+      descContainer.innerHTML = `
+        <h2>${project.title}</h2>
+        ${project.description}
+        <h3>Sample Code</h3>
+        <pre>${project.code}</pre>
+      `;
+    });
+  });
+</script>
 
 </body>
 </html>
-
