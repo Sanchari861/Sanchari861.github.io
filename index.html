@@ -6,218 +6,191 @@
 <title>Sanchari's Portfolio</title>
 <style>
   body {
+    margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #E6E6FA; /* lavender */
     color: #4B0082;
-    margin: 0;
     display: flex;
+    flex-direction: column;
     min-height: 100vh;
   }
-  aside {
+  header {
     background-color: #9370DB;
     color: white;
-    width: 280px;
     padding: 30px 20px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     text-align: center;
   }
-  aside h1 {
+  header h1 {
     margin: 0;
-    font-size: 1.8rem;
+    font-size: 2.4rem;
   }
-  aside p.tagline {
+  header p.tagline {
     font-style: italic;
-    margin: 10px 0 20px 0;
+    font-size: 1.2rem;
+    margin-top: 8px;
   }
-  aside h3 {
-    margin-top: 30px;
-    margin-bottom: 10px;
-    border-bottom: 2px solid white;
-    width: 100%;
+  section#interests {
+    background-color: #D8BFD8;
+    padding: 20px 30px;
+    color: #3B0066;
   }
-  aside ul {
-    list-style: none;
+  section#interests h2 {
+    margin-top: 0;
+  }
+  section#interests ul {
+    list-style: disc inside;
     padding-left: 0;
-  }
-  aside ul li {
-    margin-bottom: 8px;
+    margin: 0;
     font-weight: 600;
   }
-
-  /* Main content */
-  main {
-    flex-grow: 1;
-    background-color: #F8F8FF;
-    padding: 40px 50px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-  }
-
-  /* Projects list nav */
   nav.project-nav {
-    margin-bottom: 30px;
+    background-color: #BA55D3;
+    padding: 15px 20px;
     display: flex;
-    gap: 15px;
+    justify-content: center;
     flex-wrap: wrap;
+    gap: 12px;
   }
   nav.project-nav button {
     background-color: #D8BFD8;
     border: none;
-    padding: 10px 15px;
-    border-radius: 8px;
+    padding: 10px 18px;
+    border-radius: 10px;
     font-weight: 600;
     cursor: pointer;
     color: #4B0082;
     transition: background-color 0.3s ease;
+    min-width: 100px;
   }
   nav.project-nav button.active,
   nav.project-nav button:hover {
-    background-color: #9370DB;
+    background-color: #4B0082;
     color: white;
   }
-
-  /* Project display */
-  section.project-display {
+  main {
     flex-grow: 1;
+    padding: 20px 40px;
     display: flex;
-    gap: 40px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 30px;
   }
-  section.project-embed {
-    flex: 1 1 600px;
-    min-width: 320px;
-  }
-  section.project-embed iframe {
-    width: 100%;
-    height: 500px; /* bigger splash screen */
-    border-radius: 12px;
+  #projectEmbed iframe {
+    width: 400%;
+    height: 650px; 
+    border-radius: 15px;
     border: none;
-    box-shadow: 0 4px 10px rgba(75, 0, 130, 0.25);
+    box-shadow: 0 5px 15px rgba(75, 0, 130, 0.3);
   }
-  section.project-description {
-    flex: 1 1 400px;
-    min-width: 320px;
+  #projectDescription {
     background: white;
-    border-radius: 12px;
     padding: 25px;
-    box-shadow: 0 3px 8px rgba(75, 0, 130, 0.15);
-    overflow-y: auto;
-    max-height: 500px;
-  }
-  section.project-description h2 {
-    margin-top: 0;
+    border-radius: 15px;
+    box-shadow: 0 5px 12px rgba(75, 0, 130, 0.15);
     color: #4B0082;
   }
-  section.project-description h3 {
+  #projectDescription h2 {
+    margin-top: 0;
+  }
+  #projectDescription h3 {
     margin-bottom: 8px;
     color: #6A5ACD;
   }
-  section.project-description pre {
-    background: #eee;
-    border-radius: 8px;
+  #projectDescription pre {
+    background: #f0f0f0;
     padding: 15px;
+    border-radius: 12px;
     overflow-x: auto;
-    font-size: 0.9em;
+    font-size: 0.95em;
     color: #333;
+    white-space: pre-wrap;
   }
-
-  /* Responsive */
-  @media(max-width: 900px) {
-    body {
-      flex-direction: column;
-    }
-    aside {
-      width: 100%;
-      padding: 20px 10px;
-    }
+  @media (max-width: 600px) {
     main {
       padding: 20px;
     }
-    section.project-display {
-      flex-direction: column;
-      max-height: none;
+    nav.project-nav {
+      gap: 8px;
     }
-    section.project-description {
-      max-height: none;
+    nav.project-nav button {
+      min-width: unset;
+      padding: 8px 12px;
+      font-size: 0.9rem;
     }
   }
 </style>
 </head>
 <body>
 
-<aside>
-  <h1>Sanchari</h1>
-  <p class="tagline">Where creativity meets curiosity — an artist exploring the science of life</p>
+<header>
+  <h1>Sanchari's Portfolio</h1>
+  <p class="tagline">Where creativity meets curiosity — an artist exploring the science of life.</p>
+</header>
 
-  <h3>Interests</h3>
+<section id="interests">
+  <h2>Interests</h2>
   <ul>
-    <li>Painting (Watercolor)</li>
+    <li>Painting</li>
     <li>Violin</li>
     <li>Badminton</li>
     <li>Psychology</li>
     <li>Biomedical Science</li>
   </ul>
-</aside>
+</section>
+
+<nav class="project-nav" aria-label="Project navigation">
+  <button class="active" data-project="0">Project 1</button>
+  <button data-project="1">Project 2</button>
+  <button data-project="2">Project 3</button>
+  <button data-project="3">Project 4</button>
+  <button data-project="4">Project 5</button>
+  <button data-project="5">Project 6</button>
+</nav>
 
 <main>
-  <nav class="project-nav" aria-label="Project navigation">
-    <button class="active" data-project="0">Project 1</button>
-    <button data-project="1">Project 2</button>
-    <button data-project="2">Project 3</button>
-    <button data-project="3">Project 4</button>
-    <button data-project="4">Project 5</button>
-    <button data-project="5">Project 6</button>
-  </nav>
-
-  <section class="project-display">
-    <div class="project-embed" id="projectEmbed">
-      <iframe src="https://academy.cs.cmu.edu/sharing/maroonBird441906/embed" title="Project 1 embed"></iframe>
-    </div>
-
-    <div class="project-description" id="projectDescription">
-      <h2>Project 1: Global Scholar Splashscreen</h2>
-      <p>This was the first project I completed in my Computer Science class. It was a paired project where my partner and I divided the work evenly. I coded the "Climate Action" and "Life Below Water" sections, as well as the emblem in the center. This project tested our skills in basic Python programming.</p>
-      <h3>Concepts Learned</h3>
-      <ul>
-        <li>CS basics</li>
-        <li>python design</li>
-      </ul>
-      <h3>Sample Code</h3>
-      <pre>
-// Simple animation example
-const canvas = document.getElementById('myCanvas');
-const ctx = canvas.getContext('2d');
-
-let x = 0;
-function animate() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = 'maroon';
-  ctx.fillRect(x, 50, 100, 100);
-  x += 2;
-  if(x > canvas.width) x = 0;
-  requestAnimationFrame(animate);
+  <section id="projectEmbed">
+    <iframe src="https://academy.cs.cmu.edu/sharing/maroonBird441906/embed" title="Project 1 embed"></iframe>
+  </section>
+  <section id="projectDescription">
+    <h2>Project 1: Global Scholar</h2>
+    <p>This is the first project I completed at the end of Unit 1, and it was to test our skills in coding lines of basic Python. I was paired with a classmate, and we divided the work evenly. I coded the "Climate Action" and "Life Below Water" sections, as well as the emblem in the center.</p>
+    <h3>Concepts Learned</h3>
+    <ul>
+      <li>CSS animations</li>
+      <li>HTML5 canvas basics</li>
+      <li>User experience design</li>
+    </ul>
+    <h3>Sample Code</h3>
+    <pre>
+#top left: climate action
+Oval(98,40,180,30, fill='white', opacity=30, border='black', borderWidth=2)
+Label('Climate Action',99,40, fill='black', font='montserrat', size=20, bold=True, opacity=60)
+Label('Climate Action',97,40, fill='white', font='montserrat', size=20, bold=True)
+Oval(97,125,150,83, fill=gradient('honeyDew','mintCream','honeyDew', start='top'))
+Polygon(15,125,27,110,27,140, fill=gradient('honeyDew','mintCream', start='left'), opacity=90)
+Polygon(180,125,167,110,167,140, fill=gradient('honeyDew','mintCream', start='left'), opacity=90)
+Circle(97,125,35, fill=gradient('green','darkGreen', start='center'))
+Polygon(87,148,99,141,115,144,115,151,98,159,81,154, fill=gradient('snow','white', start='center'), opacity=90)
+Polygon(78,101,86,98,97,94,103,99,101,107,88,106,80,108,83,118,69,124,70,112, 
+    fill=gradient('snow','white', start='center'), opacity=90)
+Polygon(124,109,129,119,127,132,116,133,108,127,101,123,107,117,113,109,117,102,123,108, 
+    fill=gradient('snow','white', start='center'), opacity=90)
 }
 animate();
-      </pre>
-    </div>
+    </pre>
   </section>
 </main>
 
 <script>
   const projects = [
     {
-      title: "Project 1: Global Scholar Splashscreen",
+      title: "Project 1: Unit 1: Global Scholar",
       embedSrc: "https://academy.cs.cmu.edu/sharing/maroonBird441906/embed",
       description: `
         <p>This was the first project I completed in my Computer Science class. It was a paired project where my partner and I divided the work evenly. I coded the "Climate Action" and "Life Below Water" sections, as well as the emblem in the center. This project tested our skills in basic Python programming.</p>
         <h3>Concepts Learned</h3>
         <ul>
           <li>Computer Science basics</li>
-          <li>python design</li>
+          <li>Python design</li>
         </ul>`,
       code: `// Simple animation example
 const canvas = document.getElementById('myCanvas');
@@ -234,45 +207,12 @@ function animate() {
 }
 animate();`
     },
-    {
-      title: "Project 2: [Your Project Title]",
-      embedSrc: "about:blank",
-      description: `
-        <p>Description for project 2 goes here.</p>
-        <h3>Concepts Learned</h3>
-        <ul>
-          <li>Example concept 1</li>
-          <li>Example concept 2</li>
-        </ul>`,
-      code: `// Sample code snippet for project 2
-function example() {
-  console.log('Hello, project 2!');
-}`
-    },
-    {
-      title: "Project 3: [Your Project Title]",
-      embedSrc: "about:blank",
-      description: `<p>Description for project 3.</p>`,
-      code: `// Sample code snippet`
-    },
-    {
-      title: "Project 4: [Your Project Title]",
-      embedSrc: "about:blank",
-      description: `<p>Description for project 4.</p>`,
-      code: `// Sample code snippet`
-    },
-    {
-      title: "Project 5: [Your Project Title]",
-      embedSrc: "about:blank",
-      description: `<p>Description for project 5.</p>`,
-      code: `// Sample code snippet`
-    },
-    {
-      title: "Project 6: [Your Project Title]",
-      embedSrc: "about:blank",
-      description: `<p>Description for project 6.</p>`,
-      code: `// Sample code snippet`
-    }
+    // Placeholder projects, update with your info
+    { title: "Project 2: [Your Project Title]", embedSrc: "about:blank", description: "<p>Description for project 2 goes here.</p>", code: "// Sample code snippet for project 2\nfunction example() {\n  console.log('Hello, project 2!');\n}" },
+    { title: "Project 3: [Your Project Title]", embedSrc: "about:blank", description: "<p>Description for project 3.</p>", code: "// Sample code snippet" },
+    { title: "Project 4: [Your Project Title]", embedSrc: "about:blank", description: "<p>Description for project 4.</p>", code: "// Sample code snippet" },
+    { title: "Project 5: [Your Project Title]", embedSrc: "about:blank", description: "<p>Description for project 5.</p>", code: "// Sample code snippet" },
+    { title: "Project 6: [Your Project Title]", embedSrc: "about:blank", description: "<p>Description for project 6.</p>", code: "// Sample code snippet" }
   ];
 
   const navButtons = document.querySelectorAll('nav.project-nav button');
@@ -300,4 +240,3 @@ function example() {
 
 </body>
 </html>
-
