@@ -75,8 +75,8 @@
     gap: 30px;
   }
   #projectEmbed iframe {
-    width: 400%;
-    height: 650px; 
+    width: 100%;
+    height: 650px; /* large view */
     border-radius: 15px;
     border: none;
     box-shadow: 0 5px 15px rgba(75, 0, 130, 0.3);
@@ -129,7 +129,7 @@
 <section id="interests">
   <h2>Interests</h2>
   <ul>
-    <li>Painting</li>
+    <li>Painting (Watercolor)</li>
     <li>Violin</li>
     <li>Badminton</li>
     <li>Psychology</li>
@@ -151,17 +151,16 @@
     <iframe src="https://academy.cs.cmu.edu/sharing/maroonBird441906/embed" title="Project 1 embed"></iframe>
   </section>
   <section id="projectDescription">
-    <h2>Project 1: Global Scholar</h2>
-    <p>This is the first project I completed at the end of Unit 1, and it was to test our skills in coding lines of basic Python. I was paired with a classmate, and we divided the work evenly. I coded the "Climate Action" and "Life Below Water" sections, as well as the emblem in the center.</p>
+    <h2>Project 1: Maroon Bird Splashscreen</h2>
+    <p>This is the first project I completed at the end of Unit 1, and it was to test our skills in coding lines of basic Python. I was paired with a classmate, and we divided the work evenly. I coded the "Climate Action" and "Life Below Water" sections, which included all the different types of code to create the image, as well as the emblem in the center. Concepts I learned in this unit included creating shapes, learning different properties like fill, border, opacity, roundness, and more. I also learned about the basics of coding on CMU like how inspector and autochecker works.This is the first project I completed at the end of Unit 1, and it was to test our skills in coding lines of basic Python. I was paired with a classmate, and we divided the work evenly. I coded the "Climate Action" and "Life Below Water" sections, which included all the different types of code to create the image, as well as the emblem in the center. Concepts I learned in this unit included creating shapes, learning different properties like fill, border, opacity, roundness, and more. I also learned about the basics of coding on CMU like how inspector and autochecker works.</p>
     <h3>Concepts Learned</h3>
     <ul>
-      <li>CSS animations</li>
-      <li>HTML5 canvas basics</li>
-      <li>User experience design</li>
+      <li>Python basics including colors and shapes</li>
+      <li>Python canvas basics, including size, inspector, other mechanics</li>
+      <li>Design mechanics and shape properties</li>
     </ul>
     <h3>Sample Code</h3>
     <pre>
-#top left: climate action
 Oval(98,40,180,30, fill='white', opacity=30, border='black', borderWidth=2)
 Label('Climate Action',99,40, fill='black', font='montserrat', size=20, bold=True, opacity=60)
 Label('Climate Action',97,40, fill='white', font='montserrat', size=20, bold=True)
@@ -183,59 +182,70 @@ animate();
 <script>
   const projects = [
     {
-      title: "Project 1: Unit 1: Global Scholar",
+      title: "Project 1: Global Scholar",
       embedSrc: "https://academy.cs.cmu.edu/sharing/maroonBird441906/embed",
       description: `
-        <p>This is the first project I completed at the end of Unit 1, and it was to test our skills in coding lines of basic Python. I was paired with a classmate, and we divided the work evenly. I coded the "Climate Action" and "Life Below Water" sections, as well as the emblem in the center.</p>
+        <p>This is the first project I completed at the end of Unit 1, and it was to test our skills in coding lines of basic Python. I was paired with a classmate, and we divided the work evenly. I coded the "Climate Action" and "Life Below Water" sections, which included all the different types of code to create the image, as well as the emblem in the center. Concepts I learned in this unit included creating shapes, learning different properties like fill, border, opacity, roundness, and more. I also learned about the basics of coding on CMU like how inspector and autochecker works.This is the first project I completed at the end of Unit 1, and it was to test our skills in coding lines of basic Python. I was paired with a classmate, and we divided the work evenly. I coded the "Climate Action" and "Life Below Water" sections, which included all the different types of code to create the image, as well as the emblem in the center. Concepts I learned in this unit included creating shapes, learning different properties like fill, border, opacity, roundness, and more. I also learned about the basics of coding on CMU like how inspector and autochecker works.</p>
         <h3>Concepts Learned</h3>
         <ul>
-          <li>Computer Science basics</li>
-          <li>Python design</li>
+          <li>Python basics including colors and shapes</li>
+          <li>Python canvas basics, including size, inspector, other mechanics</li>
+          <li>Design mechanics and shape properties</li>
         </ul>`,
-#top left: climate action
-Oval(98,40,180,30, fill='white', opacity=30, border='black', borderWidth=2)
-Label('Climate Action',99,40, fill='black', font='montserrat', size=20, bold=True, opacity=60)
-Label('Climate Action',97,40, fill='white', font='montserrat', size=20, bold=True)
-Oval(97,125,150,83, fill=gradient('honeyDew','mintCream','honeyDew', start='top'))
-Polygon(15,125,27,110,27,140, fill=gradient('honeyDew','mintCream', start='left'), opacity=90)
-Polygon(180,125,167,110,167,140, fill=gradient('honeyDew','mintCream', start='left'), opacity=90)
-Circle(97,125,35, fill=gradient('green','darkGreen', start='center'))
-Polygon(87,148,99,141,115,144,115,151,98,159,81,154, fill=gradient('snow','white', start='center'), opacity=90)
-Polygon(78,101,86,98,97,94,103,99,101,107,88,106,80,108,83,118,69,124,70,112, 
-    fill=gradient('snow','white', start='center'), opacity=90)
-Polygon(124,109,129,119,127,132,116,133,108,127,101,123,107,117,113,109,117,102,123,108, 
-    fill=gradient('snow','white', start='center'), opacity=90)
+      code: `// Simple animation example
+const canvas = document.getElementById('myCanvas');
+const ctx = canvas.getContext('2d');
+
+let x = 0;
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = 'maroon';
+  ctx.fillRect(x, 50, 100, 100);
+  x += 2;
+  if(x > canvas.width) x = 0;
+  requestAnimationFrame(animate);
+}
+animate();`
     },
-    // Placeholder projects, update with your info
-    { title: "Project 2: [Your Project Title]", embedSrc: "about:blank", description: "<p>Description for project 2 goes here.</p>", code: "// Sample code snippet for project 2\nfunction example() {\n  console.log('Hello, project 2!');\n}" },
-    { title: "Project 3: [Your Project Title]", embedSrc: "about:blank", description: "<p>Description for project 3.</p>", code: "// Sample code snippet" },
-    { title: "Project 4: [Your Project Title]", embedSrc: "about:blank", description: "<p>Description for project 4.</p>", code: "// Sample code snippet" },
-    { title: "Project 5: [Your Project Title]", embedSrc: "about:blank", description: "<p>Description for project 5.</p>", code: "// Sample code snippet" },
-    { title: "Project 6: [Your Project Title]", embedSrc: "about:blank", description: "<p>Description for project 6.</p>", code: "// Sample code snippet" }
+    {
+      title: "Project 2: [Your Project Title]",
+      embedSrc: "about:blank",
+      description: `<p>Description for project 2 goes here.</p>`,
+      code: `// Sample code snippet for project 2
+function example() {
+  console.log('Hello, project 2!');
+}`
+    },
+    {
+      title: "Project 3: [Your Project Title]",
+      embedSrc: "about:blank",
+      description: `<p>Description for project 3.</p>`,
+      code: `// Sample code snippet`
+    },
+    {
+      title: "Project 4: [Your Project Title]",
+      embedSrc: "about:blank",
+      description: `<p>Description for project 4.</p>`,
+      code: `// Sample code snippet`
+    },
+    {
+      title: "Project 5: [Your Project Title]",
+      embedSrc: "about:blank",
+      description: `<p>Description for project 5.</p>`,
+      code: `// Sample code snippet`
+    },
+    {
+      title: "Project 6: [Your Project Title]",
+      embedSrc: "about:blank",
+      description: `<p>Description for project 6.</p>`,
+      code: `// Sample code snippet`
+    }
   ];
 
   const navButtons = document.querySelectorAll('nav.project-nav button');
-  const embedContainer = document.getElementById('projectEmbed');
+  const embedIframe = document.querySelector('#projectEmbed iframe');
   const descContainer = document.getElementById('projectDescription');
 
-  navButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      navButtons.forEach(btn => btn.classList.remove('active'));
-      button.classList.add('active');
+  navButtons.forEach(button =>
 
-      const index = button.getAttribute('data-project');
-      const project = projects[index];
 
-      embedContainer.innerHTML = `<iframe src="${project.embedSrc}" title="${project.title} embed"></iframe>`;
-      descContainer.innerHTML = `
-        <h2>${project.title}</h2>
-        ${project.description}
-        <h3>Sample Code</h3>
-        <pre>${project.code}</pre>
-      `;
-    });
-  });
-</script>
-
-</body>
-</html>
