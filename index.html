@@ -13,7 +13,7 @@
     display: flex;
     min-height: 100vh;
   }
-  /* Sidebar for personal info */
+  /* Sidebar without picture */
   aside {
     background-color: #9370DB;
     color: white;
@@ -23,36 +23,25 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  aside img {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 20px;
-    border: 3px solid white;
+    text-align: center;
   }
   aside h1 {
     margin: 0;
     font-size: 1.8rem;
-    text-align: center;
   }
   aside p.tagline {
     font-style: italic;
     margin: 10px 0 20px 0;
-    text-align: center;
   }
   aside h3 {
     margin-top: 30px;
     margin-bottom: 10px;
     border-bottom: 2px solid white;
     width: 100%;
-    text-align: center;
   }
   aside ul {
     list-style: none;
     padding-left: 0;
-    text-align: center;
   }
   aside ul li {
     margin-bottom: 8px;
@@ -100,12 +89,12 @@
     flex-wrap: wrap;
   }
   section.project-embed {
-    flex: 1 1 450px;
+    flex: 1 1 600px;
     min-width: 320px;
   }
   section.project-embed iframe {
     width: 100%;
-    height: 400px;
+    height: 500px; /* bigger splash screen */
     border-radius: 12px;
     border: none;
     box-shadow: 0 4px 10px rgba(75, 0, 130, 0.25);
@@ -118,7 +107,7 @@
     padding: 25px;
     box-shadow: 0 3px 8px rgba(75, 0, 130, 0.15);
     overflow-y: auto;
-    max-height: 400px;
+    max-height: 500px;
   }
   section.project-description h2 {
     margin-top: 0;
@@ -144,14 +133,7 @@
     }
     aside {
       width: 100%;
-      flex-direction: row;
-      justify-content: center;
       padding: 20px 10px;
-      gap: 30px;
-    }
-    aside img {
-      width: 120px;
-      height: 120px;
     }
     main {
       padding: 20px;
@@ -169,20 +151,17 @@
 <body>
 
 <aside>
-  <img src="https://i.pravatar.cc/160?u=sanchari" alt="Professional photo of Sanchari" />
-  <div>
-    <h1>Sanchari</h1>
-    <p class="tagline">From canvas to court to chords—an artist in motion</p>
+  <h1>Sanchari</h1>
+  <p class="tagline">From canvas to court to chords—an artist in motion</p>
 
-    <h3>Interests</h3>
-    <ul>
-      <li>Painting (Watercolor)</li>
-      <li>Violin</li>
-      <li>Badminton</li>
-      <li>Psychology</li>
-      <li>Biomedical Science</li>
-    </ul>
-  </div>
+  <h3>Interests</h3>
+  <ul>
+    <li>Painting (Watercolor)</li>
+    <li>Violin</li>
+    <li>Badminton</li>
+    <li>Psychology</li>
+    <li>Biomedical Science</li>
+  </ul>
 </aside>
 
 <main>
@@ -197,13 +176,12 @@
 
   <section class="project-display">
     <div class="project-embed" id="projectEmbed">
-      <!-- Embed iframe here -->
       <iframe src="https://academy.cs.cmu.edu/sharing/maroonBird441906/embed" title="Project 1 embed"></iframe>
     </div>
 
     <div class="project-description" id="projectDescription">
       <h2>Project 1: Maroon Bird Splashscreen</h2>
-      <p>This project involved creating a splash screen animation using web technologies. I learned about animation timing, layering, and UI transitions.</p>
+      <p>This was the first project I completed in my Computer Science class. It was a paired project where my partner and I divided the work evenly. I coded the "Climate Action" and "Life Below Water" sections, as well as the emblem in the center. This project tested our skills in basic Python programming.</p>
       <h3>Concepts Learned</h3>
       <ul>
         <li>CSS animations</li>
@@ -237,7 +215,7 @@ animate();
       title: "Project 1: Maroon Bird Splashscreen",
       embedSrc: "https://academy.cs.cmu.edu/sharing/maroonBird441906/embed",
       description: `
-        <p>This project involved creating a splash screen animation using web technologies. I learned about animation timing, layering, and UI transitions.</p>
+        <p>This was the first project I completed in my Computer Science class. It was a paired project where my partner and I divided the work evenly. I coded the "Climate Action" and "Life Below Water" sections, as well as the emblem in the center. This project tested our skills in basic Python programming.</p>
         <h3>Concepts Learned</h3>
         <ul>
           <li>CSS animations</li>
@@ -306,18 +284,13 @@ function example() {
 
   navButtons.forEach(button => {
     button.addEventListener('click', () => {
-      // Remove active class from all buttons
       navButtons.forEach(btn => btn.classList.remove('active'));
-      // Add active to clicked button
       button.classList.add('active');
 
       const index = button.getAttribute('data-project');
       const project = projects[index];
 
-      // Update iframe embed
       embedContainer.innerHTML = `<iframe src="${project.embedSrc}" title="${project.title} embed"></iframe>`;
-
-      // Update description + code
       descContainer.innerHTML = `
         <h2>${project.title}</h2>
         ${project.description}
