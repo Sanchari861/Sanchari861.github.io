@@ -132,7 +132,7 @@
 <section id="interests">
   <h2>Interests</h2>
   <ul>
-    <li>Painting (Watercolor)</li>
+    <li>Painting</li>
     <li>Violin</li>
     <li>Badminton</li>
     <li>Psychology</li>
@@ -184,7 +184,7 @@ Polygon(124,109,129,119,127,132,116,133,108,127,101,123,107,117,113,109,117,102,
 <script>
   const projects = [
     {
-      title: "Unit 1: Global Scholar",
+      title: "Project 1: Global Scholar",
       embedSrc: "https://academy.cs.cmu.edu/sharing/maroonBird441906/embed",
       description: `
         <p>This is the first project I completed at the end of Unit 1, and it was to test our skills in coding lines of basic Python. I was paired with a classmate, and we divided the work evenly. I coded the "Climate Action" and "Life Below Water" sections, which included all the different types of code to create the image, as well as the emblem in the center. Concepts I learned in this unit included creating shapes, learning different properties like fill, border, opacity, roundness, and more. I also learned about the basics of coding on CMU like how inspector and autochecker works.</p>
@@ -209,14 +209,33 @@ Polygon(124,109,129,119,127,132,116,133,108,127,101,123,107,117,113,109,117,102,
     },
     // The rest of projects here, unchanged...
     {
-      title: "Project 2: [Your Project Title]",
-      embedSrc: "about:blank",
-      description: `<p>Description for project 2 goes here.</p>`,
-      code: `// Sample code snippet for project 2
-function example() {
-  console.log('Hello, project 2!');
-}`
+      title: "Project 2: Global Goals",
+      embedSrc: "https://academy.cs.cmu.edu/sharing/indigoPuppy599270",
+      description: `
+        <p>In this project, my partner and I created an interactive slideshow, and each slide changes once the mouse is clicked. This mimics how a normal slide presentation would work. Along with that, we had to create the slideshow in a way so that the progress bar at the top moved when the mouse was clicked, and the logos also moved around once the mouse was clicked. Our project focused on the second most important global goal, zero hunger. Our presentation discusses the issue, different goals that are set, and when we aim to achieve them, as well as solutions and what you can do to help.</p>
+        <h3>Concepts Learned</h3>
+        <ul>
+          <li>Python functions</li>
+          <li>learning onMousePress functions and how to call on them</li>
+          <li>how to use slideNum to make switching between slides easier</li>
+          <li>using align functions to create better visuals</li>
+        </ul>`,
+      code: if slideNum.value == 1:
+        Rect(0,0,400,400,fill=rgb(255,253,129))
+        ProgressBar(50,30)
+        ProgressMarker(50+75,30)
+        EggSymbol(345,340)
+        Tomato(90,335)
+        Text1=Label('Why is it Important?',200,75, font='montserrat', size=20, fill='sienna')
+        Text2=Label("Despite having enough resources to", 200,125,font='montserrat', fill='sienna', size=15)
+        Text3=Label("feed everyone, hunger remains the", 200,143,font='montserrat', fill='sienna', size=15)
+        Text4=Label("world's deadliest crisis. Inequality",200,143+18,font='montserrat', fill='sienna', size=15)
+        Text5=Label("and poor management keep millions",200,143+36,font='montserrat', fill='sienna', size=15) 
+        Text6=Label("malnourished. With sustainable farming,",200,143+36+18,font='montserrat', fill='sienna', size=15)
+        Text7=Label("smart tech, and fair distribution,",200,143+36+36,font='montserrat', fill='sienna', size=15)
+        Text8=Label("we can end hunger for good.",200,143+36+36+18,font='montserrat', fill='sienna', size=15)`
     },
+    
     {
       title: "Project 3: [Your Project Title]",
       embedSrc: "about:blank",
