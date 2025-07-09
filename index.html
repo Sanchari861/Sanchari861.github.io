@@ -156,7 +156,7 @@
 
   <section id="projectDescription">
     <h2>Project 1: Global Scholar</h2>
-    <p>This is the first project I completed at the end of Unit 1, and it was to test our skills in coding lines of basic Python. I was paired with a classmate, and we divided the work evenly. I coded the "Climate Action" and "Life Below Water" sections, which included all the different types of code to create the image, as well as the emblem in the center. Concepts I learned in this unit included creating shapes, learning different properties like fill, border, opacity, roundness, and more. I also learned about the basics of coding on CMU like how inspector and autochecker works.</p>
+    <p>This is the first project I completed at the end of Unit 1, and it was to test our skills in coding lines of basic Python. I was paired with a classmate, and we divided the work evenly. I coded the "Climate Action" and "Life Below Water" sections, which included all the different types of code to create the image, as well as the emblem in the center. Concepts I learned in this unit included creating shapes and understanding various properties, such as fill, border, opacity, and roundness, among others. I also learned about the basics of coding at CMU, including how inspectors and autocheckers work.</p>
     <h3>Concepts Learned</h3>
     <ul>
       <li>Python basics including colors and shapes</li>
@@ -185,7 +185,7 @@ Polygon(124,109,129,119,127,132,116,133,108,127,101,123,107,117,113,109,117,102,
       title: "Project 1: Global Scholar",
       embedSrc: "https://academy.cs.cmu.edu/sharing/maroonBird441906/embed",
       description: `
-        <p>This is the first project I completed at the end of Unit 1, and it was to test our skills in coding lines of basic Python. I was paired with a classmate, and we divided the work evenly. I coded the "Climate Action" and "Life Below Water" sections...</p>
+        <p>This is the first project I completed at the end of Unit 1, and it was to test our skills in coding lines of basic Python. I was paired with a classmate, and we divided the work evenly. I coded the "Climate Action" and "Life Below Water" sections, which included all the different types of code to create the image, as well as the emblem in the center. Concepts I learned in this unit included creating shapes and understanding various properties, such as fill, border, opacity, and roundness, among others. I also learned about the basics of coding at CMU, including how inspectors and autocheckers work.</p>
         <h3>Concepts Learned</h3>
         <ul>
           <li>Python basics including colors and shapes</li>
@@ -210,14 +210,36 @@ Oval(97,125,150,83, fill=gradient('honeyDew','mintCream','honeyDew', start='top'
           <li>using align functions to create better visuals</li>
         </ul>`,
       code: `if slideNum.value == 1:
-  #page 1
+  #This codes my logo, the tomato
+  #this is sanchari's tomato!
+  def Tomato(x,y):
+  Oval(x,y,155,125, fill='red')
+  Polygon(x+32,y-38,x+51,y-24,x+60,y-6,x+55,y+16,x+69,y+1,x+68,y-17,x+54,y-33, fill='lightCoral')
+  Star(x+1,y-51,50,9, fill='darkGreen',roundness=30)
+  Star(x+1,y-51,30,7, fill='green', roundness=30)
+  Oval(x-17,y+11,10,20)
+  Oval(x+14,y+11,10,20)
+  Oval(x-17,y+8,5,10, fill='white')
+  Oval(x+14,y+8,5,10, fill='white')
+  #This is my logo being called on each slide and moving around on each slide
+  if slideNum.value == 1:
+  Tomato(90,335)
+  if slideNum.value == 2:
+  Tomato(100,310)
+  if slideNum.value==3:
+  Tomato(300,140)
+  if slideNum.value==4:
+  Tomato(300,140)
+  if slideNum.value==5:
+  Tomato(110,275)
+  #page 1, this is the second slide in our project, here all of the logos are called, as well as the progress bar, 
+  while the presentation talks about why world hunger is a problem that should be focued on.
   Rect(0,0,400,400,fill=rgb(255,253,129))
   Rect(0,0,400,400,fill=rgb(255,253,129))
   ProgressBar(50,30)
   ProgressMarker(50+75,30)
   EggSymbol(345,340)
-  Tomato(90,335)
-  #page2
+  Tomato(90,335) 
   Text1=Label('Why is it Important?',200,75, font='montserrat', size=20, fill='sienna')
   Text2=Label("Despite having enough resources to", 200,125,font='montserrat', fill='sienna', size=15)
   Text3=Label("feed everyone, hunger remains the", 200,143,font='montserrat', fill='sienna', size=15)
