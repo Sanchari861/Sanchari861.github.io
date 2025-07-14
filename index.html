@@ -249,10 +249,76 @@ Oval(97,125,150,83, fill=gradient('honeyDew','mintCream','honeyDew', start='top'
   Text8=Label("we can end hunger for good.",200,143+36+36+18,font='montserrat', fill='sienna', size=15))`
     },
     {
-      title: "Project 3",
-      embedSrc: "about:blank",
-      description: `<p>Description for project 3.</p>`,
-      code: `// Sample code snippet`
+      title: "Project 2: BookBridge: Increasing Literacy",
+      embedSrc: "https://academy.cs.cmu.edu/sharing/linenMonkey353123",
+      description: `
+        <p>In this project, my partner and I created an interactive game in which books can be bought to increase literacy rates. The game utilizes if-else statements as well as custom functions in order to make the process of making the game's responses simpler. 10 dollars buys 1 book, 50 dollars buys 6 books, and 100 dollars buys 9 books. Once the bookshelf is filled and the budget of $530 has been spent, the endscreen shows the task has been completed along with a celebration.</p>
+        <h3>Concepts Learned</h3>
+        <ul>
+          <li>if-else statements</li>
+          <li>using custom functions and onMousePress to make it interactive</li>
+          <li>how to call custom functions and reuse them throughout the code</li>
+          <li>using multiple conditionals and multiple parameters</li>
+        </ul>`,
+      code: `#Fireworks (done by Sanchari)
+    def drawFireworks(x,y):
+    if(x<200):
+    Star(x,y,50,11, fill=gradient('gold','darkOrange'),roundness=20)
+    else:
+    Star(x,y,35,13,rotateAngle=20,fill=gradient('gold','darkOrange'),roundness=20)
+    #This shows the ending screen:
+    if Budget.value==0:
+    EndScreen=Rect(0,0,400,400,opacity=40)
+    EndScreenMask=Rect(200,200,275,275,align='center',fill='Burlywood', border='sienna', borderWidth=10)
+    Label('TASK',200,160,font='montserrat',fill='sienna',size=50)
+    Label('COMPLETE!!!',200,220, font='montserrat',size=35, fill='sienna')
+    if EndScreen.visible==True:
+    drawFireworks(mouseX,mouseY)
+    drawFireworks(40,80)
+    drawFireworks(360,320)
+    drawFireworks(320,40)
+    drawFireworks(80,360)
+    #This has other parts of code from our entire code that include functions like if-else, calling functions, and the use of different parameters.
+    #ReplyButtons
+    ###These show the number of books purchased at the bottom.
+    #Reply1 done by Dani
+    def drawReply1():
+    Label('+1 Book',200,360,size=15,font='montserrat',fill='burlyWood',bold=True)
+    #These two were done by Sanchari!
+    def drawReply2():
+    Label('+5 Books',200,360,size=15,font='montserrat',fill='burlyWood',bold=True)
+    def drawReply3():
+    Label('+10 Books',200,360,size=15,font='montserrat',fill='burlyWood',bold=True)
+    Budget=Label(530,350,47,fill='sienna',size=17,font='montserrat',align='center',visible=False)
+    def onMousePress(mouseX,mouseY):
+    #This removes the Splashscreen and shows the game setup!
+    if instructionsBox.visible==True:
+    drawShelf(240,True)
+    drawShelf(160,True)
+    drawShelf(80,True)
+    instructionsBox.visible=False
+    Button1=Rect(10,10,87.5,60,fill='sienna',border='burlyWood')
+    Button2=Rect(10+97.5,10,87.5,60,fill='sienna',border='burlyWood')
+    Button3=Rect(10+97.5+97.5,10,87.5,60,fill='sienna',border='burlyWood')
+    Rect(10+97.5+97.5+97.5,10,87.5,60,fill='burlyWood',border='sienna')
+    Label('$10',53.5,23,fill='burlyWood',size=17,font='montserrat', align='center')
+    Label('1 Book',53.5,47,fill='burlyWood',size=17,font='montserrat',align='center')
+    Label('$50',151.5,23,fill='burlyWood',size=17,font='montserrat',align='center')
+    Label('6 books',151.5,47,fill='burlyWood',size=17,font='montserrat',align='center')
+    Label('$100',248.5,23,fill='burlyWood',size=17,font='montserrat',align='center')
+    Label('9 books',248.5,47,fill='burlyWood',size=17,font='montserrat',align='center')
+    Label('Budget:',346.5,23,fill='sienna',size=17,font='montserrat',align='center')
+    Label('$',312,46,fill='sienna',size=17,font='montserrat',align='center')
+    Budget.visible=True
+    Budget.toFront()
+    #This codes the function of the first button:
+    elif (mouseX<98)and(mouseX>10)and(mouseY>10)and(mouseY<70):
+        if (mouseX<98)and(mouseX>10)and(mouseY>10)and(mouseY<70)and(Booka1.visible==False):
+            Booka1.visible=True
+            Budget.value-=10
+            Rect(160,340,80,80,fill='darkBlue')
+            drawReply1()
+            Booka1.toFront()`
     },
     {
       title: "Project 4",
