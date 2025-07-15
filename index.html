@@ -261,6 +261,7 @@ Oval(97,125,150,83, fill=gradient('honeyDew','mintCream','honeyDew', start='top'
           <li>using multiple conditionals and multiple parameters</li>
         </ul>`,
       code: `#Fireworks (done by Sanchari)
+    ###The fireworks pop up when each bookshelf is filled, and at the end, once the goal has been completed
     def drawFireworks(x,y):
     if(x<200):
     Star(x,y,50,11, fill=gradient('gold','darkOrange'),roundness=20)
@@ -291,6 +292,53 @@ Oval(97,125,150,83, fill=gradient('honeyDew','mintCream','honeyDew', start='top'
     Label('+10 Books',200,360,size=15,font='montserrat',fill='burlyWood',bold=True)
     Budget=Label(530,350,47,fill='sienna',size=17,font='montserrat',align='center',visible=False)
     def onMousePress(mouseX,mouseY):
+    #These show how the fireworks were called once eahc bookshelf was filled.
+    #bookshelf 1:
+    elif (mouseX<98)and(mouseX>10)and(mouseY>10)and(mouseY<70)and(Booka18.visible==False):
+    Booka18.visible=True
+    Budget.value-=10
+    Rect(160,340,80,80,fill='darkBlue')
+    drawReply1()
+    Booka18.toFront()
+    if(Booka18.visible==True):
+    drawFireworks(350,100)
+    drawFireworks(150,100)
+    Label('Done!',200,130,font='montserrat', size=25)
+    #bookshelf 2:
+    elif (mouseX>108)and(mouseX<195)and(mouseY>10)and(mouseY<70)and(Shelf2cGroup.visible==False):
+    Shelf2cGroup.visible=True
+    Budget.value-=50
+    Rect(160,340,80,80,fill='darkBlue')
+    drawReply2()
+    Shelf2cGroup.toFront()
+    if(Shelf2cGroup.visible==True):
+    drawFireworks(330,200)
+    drawFireworks(50,210)
+    Label('Done!',200,210,font='montserrat', size=25)
+    #bookshelf 3:
+    elif (mouseX>205)and(mouseX<293)and(mouseY>10)and(mouseY<70)and(Shelf3bGroup.visible==False):
+    Shelf3bGroup.visible=True
+    Budget.value-=100
+    Rect(160,340,80,80,fill='darkBlue')
+    drawReply3()
+    Shelf3bGroup.toFront()
+    if(Shelf3bGroup.visible==True):
+    drawFireworks(350,280)
+    drawFireworks(90,300)
+    Label('Done!',200,290,font='montserrat', size=25)
+    #This shows the ending screen:
+    if Budget.value==0:
+    EndScreen=Rect(0,0,400,400,opacity=40)
+    EndScreenMask=Rect(200,200,275,275,align='center',fill='Burlywood', border='sienna', borderWidth=10)
+    Label('TASK',200,160,font='montserrat',fill='sienna',size=50)
+    Label('COMPLETE!!!',200,220, font='montserrat',size=35, fill='sienna')
+    if EndScreen.visible==True:
+    drawFireworks(mouseX,mouseY)
+    drawFireworks(40,80)
+    drawFireworks(360,320)
+    drawFireworks(320,40)
+    drawFireworks(80,360)
+    #Other Code:
     #This removes the Splashscreen and shows the game setup!
     if instructionsBox.visible==True:
     drawShelf(240,True)
@@ -310,15 +358,7 @@ Oval(97,125,150,83, fill=gradient('honeyDew','mintCream','honeyDew', start='top'
     Label('Budget:',346.5,23,fill='sienna',size=17,font='montserrat',align='center')
     Label('$',312,46,fill='sienna',size=17,font='montserrat',align='center')
     Budget.visible=True
-    Budget.toFront()
-    #This codes the function of the first button:
-    elif (mouseX<98)and(mouseX>10)and(mouseY>10)and(mouseY<70):
-    if (mouseX<98)and(mouseX>10)and(mouseY>10)and(mouseY<70)and(Booka1.visible==False):
-    Booka1.visible=True
-    Budget.value-=10
-    Rect(160,340,80,80,fill='darkBlue')
-    drawReply1()
-    Booka1.toFront()`
+    Budget.toFront()`
     },
     {
       title: "Project 4",
