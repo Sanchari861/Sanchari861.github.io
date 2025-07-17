@@ -361,10 +361,52 @@ Oval(97,125,150,83, fill=gradient('honeyDew','mintCream','honeyDew', start='top'
     Budget.toFront()`
     },
     {
-      title: "Project 4",
-      embedSrc: "about:blank",
-      description: `<p>Description for project 4.</p>`,
-      code: `// Sample code snippet`
+      title: "Project 4: Trash Dash: Learning about water pollution",
+      embedSrc: "https://academy.cs.cmu.edu/sharing/blueVioletMonkey737014/embed",
+      description: `
+        <p>In this task, my partner and I created two parts to a game to help others learn about pollution in the waters. The first portion asks three questions about contaminants and marine life. If the player's answer is correct, then they can move on to the next question. After the three questions, there is a game where the logo (the Shrimp) can be moved using the left and right keys to avoid falling trash. The game helps visualize what marine creatures may experience while living underwater. This was my most favorite project yet!</p>
+        <h3>Concepts Learned</h3>
+        <ul>
+          <li>if-elif-else statements</li>
+          <li>using onKeyPress and onKeyRelease</li>
+          <li>using toFront() and toBack() to make sure that the layers work correctly</li>
+          <li>creating interactive logos that move with the help of keys and creating moving objects that can hit each other (onStep and hit) </li>
+        </ul>`,
+      code: `#This is the part where the correct screen shows up after the correct option is chosen for the questions. 
+      #utilizes hits and if statements.
+    def onMousePress(mouseX,mouseY):
+    if (Ans2.hits(mouseX,mouseY)and(Label5.value=='Question 1:')):
+    print(100)
+    drawCorrect()
+    if (Ans3.hits(mouseX,mouseY))and(Label5.value=='Question 2:'):
+    print(200)
+    drawCorrect()
+    if (Ans1.hits(mouseX,mouseY))and(Label5.value=='Question 3:'):
+    print(200)
+    drawCorrect()
+    CigaretteGroup=Group(
+    Rect(20,-70,15,60,fill=gradient('white','chocolate','chocolate',start='top')),
+    Rect(20,-70,15,17,fill='white')
+    #slide 4 (game)
+    #This code is the last part of the game where the shrimp moves and the cigarette butts are falling from the top of the canvas.
+    #The function utilizes pressing the left and right keys to move the shrimp and uses the onStep and the Contains function to create the fun part of the game.
+    def onKeyHold(key):
+    if 'left' in key:
+    ShrimpGroup.centerX-=10
+    if 'right' in key:
+    ShrimpGroup.centerX+=10
+    def onStep():
+    if app.fall==True:
+    CigaretteGroup.toFront()
+    if CigaretteGroup.top<400:
+    CigaretteGroup.centerY+=15
+    elif CigaretteGroup.top>=400:
+    CigaretteGroup.bottom=50
+    CigaretteGroup.centerX=randrange(10,390)
+    if ShrimpGroup.contains(CigaretteGroup.centerX,CigaretteGroup.centerY):
+    app.stop()
+    GameGroup.visible=True
+    GameGroup.toFront()`
     },
     {
       title: "Project 5",
