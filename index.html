@@ -409,10 +409,109 @@ Oval(97,125,150,83, fill=gradient('honeyDew','mintCream','honeyDew', start='top'
     GameGroup.toFront()`
     },
     {
-      title: "Project 5",
-      embedSrc: "about:blank",
-      description: `<p>Description for project 5.</p>`,
-      code: `// Sample code snippet`
+      title: "Project 5: Let them eat cake!",
+      embedSrc: "https://academy.cs.cmu.edu/sharing/navyMouse484389/embed",
+      description: `
+        <p>This was the first project that wasn't based on a Global Goal. My partner and I created an interactive game in which you can build your own cake. There are 4 different flavors and 4 different toppings that you can choose from, along with two types of candles. Then, once the cake is made, it is your job to deliver it to the last queen of France before the French Revolution, Marie Antoinette. The maze utilizes the up, down, left, and right keys to move the cake box, and at the end, it is delivered to Marie. The endscreen pops up once she gets the cake, and you get a whole bunch of fresh fruit!</p>
+        <h3>Concepts Learned</h3>
+        <ul>
+          <li>conditional statements</li>
+          <li>using and, or, &  not to make it so that a function happens when certain requirements are met</li>
+          <li>onKeyPress and onKeyHold as well as other function + custom functions</li>
+          <li>making sure each function has parameters so that they can be called numerous times</li>
+        </ul>`,
+      code: `
+    ###Our queen MARIE ANTOINETTE
+    marieAntoinette=Group(
+    Polygon(200,291,163,344,237,344, fill='lightBlue', opacity=40),
+    Oval(200,320,25,60, fill='lightBlue'),
+    Circle(200,280,15,fill='cornSilk'),
+    Rect(189,265,22,7,fill='gold'),
+    Star(200,265,6,3, roundness=60, fill='gold')
+    )
+    ###Endscreen after the cake is delivered to Marie!
+    def drawEndGame():
+    Rect(0,0,400,400,opacity=5)
+    Rect(200,200,300,300,fill='lavenderBlush',align='center')
+    Label('SUCCESS!',200,200,fill='darkRed',size=50,font='montserrat')
+    ###These four functions code the fruits that can be put on the cake and go around the border on the endscreen
+    def drawStrawberry(x,y):
+    Star(x-2,y+6,20,3, roundness=55, rotateAngle=-20, fill=gradient(rgb(255,92,92),rgb(201,0,0), start='top'))
+    Polygon(x+3, y-10,x+3,y-7,x-6,y-9,x+2,y-3,x+3,y+5,x+6,y,x+13,y+11,x+9,y-1,x+10,y-10, fill='green')
+    def drawBlueberry(x,y):
+    Circle(x-2,y-8,5, fill=gradient('darkBlue','royalBlue','indigo'))
+    Circle(x+10,y-3,10,fill=gradient('darkBlue','royalBlue','indigo'))
+    Circle(x,y+9,7,fill=gradient('darkBlue','royalBlue','indigo'))
+    def drawCherry(x,y):
+    Line(x,y+2,x+4,y-16, fill='green')
+    Line(x+4,y-16,x-1,y-25, fill='green')
+    Oval(x,y+2,30,20, fill=rgb(105,0,0))
+    def drawKiwi(x,y):
+    Oval(x,y,38,29,fill=gradient('mediumSeaGreen','lawnGreen','mediumSeaGreen'))
+    Oval(x,y,19,15,fill='paleGoldenRod')
+    ###Codes the berries on the cake
+    berriesGroup=Group(
+    Circle(147,128,5,fill=None),
+    Circle(170,132,5,fill=None),
+    Circle(200,134,5,fill=None),
+    Circle(230,132,5,fill=None),
+    Circle(253,128,5,fill=None),
+    Circle(130,180,5,fill=None),
+    Circle(160,185,5,fill=None),
+    Circle(200,188,5,fill=None),
+    Circle(240,185,5,fill=None),
+    Circle(270,180,5,fill=None),
+    visible=False
+    )
+    ###Draws the candle that can be on the cake, changes color
+    def drawCandle(x,y,candleColor):
+    Rect(x,y,5,30, align='top', fill='paleGoldenRod', border='sienna')
+    Star(x,y-5,6,7,roundness=50, fill=gradient(candleColor,'gold'))
+    ###changes the slide from the splashscreen to the cake-building screen and helps to build the cake
+    def onMousePress(mouseX,mouseY):
+    if TitleGroup.visible==True:
+    TitleGroup.visible=False
+    marieAntoinette.visible=False
+    buildACake.visible=True
+    drawContainers(0,280)
+    drawContainers(0,340)
+    bg.radius=300 
+    cakeGroup1.visible=True
+    cakeBottom.visible=True
+    cakeGroup2.visible=True
+    cakeGroup2.toFront()
+    cakeTop.visible=True
+    cakeTop.toFront()
+    drawCandle(200,300,'orange')
+    drawCandle(200,360,'red')
+    instructions.visible=True
+    goOn.visible=True
+    berriesGroup.visible=True
+    berriesGroup.toFront()
+    drawStrawberry(40,310)
+    drawBlueberry(120,310)
+    drawCherry(40,370)
+    drawKiwi(120,370)
+    ###This calls the candles and draws them on the cake
+    if (mouseX>160)and(mouseX<240)and(mouseY>280)and(mouseY<340):
+    drawCandle(200,96,'orange')
+    if (mouseX>160)and(mouseX<240)and(mouseY>340):
+    drawCandle(200,96,'red')
+    ###Keys used to play the maze game
+    def onKeyHold(key):
+    if 'left' in key:
+    cakeBox.centerX-=3
+    BoxCake.centerX-=3
+    if 'right' in key:
+    cakeBox.centerX+=3
+    BoxCake.centerX+=3
+    if 'up' in key:
+    cakeBox.centerY-=3
+    BoxCake.centerY-=3
+    if 'down' in key:
+    cakeBox.centerY+=3
+    BoxCake.centerY+=3
+    `
     },
     {
       title: "Project 6",
