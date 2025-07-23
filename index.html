@@ -536,10 +536,170 @@ fill=gradient('snow','white', start='center'), opacity=90)</pre>
     `
     },
     {
-      title: "Project 6",
-      embedSrc: "about:blank",
-      description: `<p>Description for project 6.</p>`,
-      code: `// Sample code snippet`
+      title: "Project 6:Tomato Toss!",
+      embedSrc: "https://academy.cs.cmu.edu/sharing/maroonCat960067/embed",
+      description: `
+        <p>This is the final project, and it brings back one of the best characters made, Tom the tomato! This game focuses on the world hunger-related global goal and incorporates informative and entertaining parts. The first part has stats that you can go through. Each one is a new stat, and it repeats through three different, mind-blowing facts about world hunger and how many people it affects. Using the back button, you can come back to the first screen and load another fact by clicking on the Stats button. Once you have learned all the information, clicking on the game button will take you to a catching game. In the game, tomatoes are falling from the sky, and it is your job to catch ten and feed those who are in need of food. If you catch ten, well done! If you miss more than 3, try again. I liked this project not only because there were many new concepts, but because of how I envisioned my game; I had to find a way to use a different string to create the "catch" and "miss" scores.</p>
+        <h3>Concepts Learned</h3>
+        <ul>
+          <li>complex conditionals to make code clearer and less repetitive </li>
+          <li>making groups so that many shapes or labels can move together at the same time</li>
+          <li>using custom and built-in functions like onMousePress, onKeyHold, and onStep to create the game</li>
+          <li>using a different string so that the score is adjacent to the game and the player's actions</li>
+        </ul>`,
+      code: `
+    ###Start of code
+    import random
+    app.background=rgb(255,225,154)
+    app.fall=False
+    app.score=0
+    app.misses=0
+    ###Grouping was used to make moving and visibility easier when certain keys are pressed. These three groups code the splashscreen, the stats button and the game button
+    splash=Group(
+    Rect(0,0,400,400,fill=rgb(255,225,154)),
+    Rect(200,200,350,350, fill='lightSalmon', border='lightCoral',borderWidth=25, align='center', opacity=80),
+    Label('Tomato Toss!', 200,95,font='grenze', size=30, fill='sienna'),
+    Label('Click the STATS button to',200,130,font='grenze', size=18, fill='sienna'),
+    Label('learn about World Hunger', 200,150,font='grenze', size=18, fill='sienna'),
+    Label('Click the GAME button to start the game', 200,180, font='grenze', size=18, fill='sienna'),
+    visible=True
+    )
+    stats=Group(
+    Rect(65,220,60,40, fill=rgb(255,225,154), border='salmon'),
+    Label('STATS',95,240, font='grenze', size=18)
+    )
+    game=Group(
+    Rect(275,220,60,40, fill=rgb(255,225,154), border='salmon'),
+    Label('GAME',305,240, font='grenze', size=18)
+    )
+    ###This is the group for the logos, or the main characters
+    Tomato=Group(
+    Oval(200,300,155,125, fill='red'),
+    Polygon(232,262,251,276,260,293,255,316,269,301,268,283,254,267, fill='lightCoral'),
+    Star(201,259,50,9, fill='darkGreen',roundness=30),
+    Star(201,249,30,7, fill='green', roundness=30),
+    Oval(183,311,10,20),
+    Oval(214,311,10,20),
+    Oval(183,308,5,10, fill='white'),
+    Oval(214,308,5,10, fill='white'),
+    visible=True
+    )
+    babyTom=Group(
+    Oval(200,-40,40,25, fill='red'),
+    Oval(205,-57,7,15, rotateAngle=60, fill='green')
+    )
+    bob=Group(
+    Rect(200,350,30,50, align='center', fill='navy', border='royalBlue',borderWidth=3),
+    Circle(200,315,15, fill='tan', border='rosyBrown'),
+    visible=False
+    )
+    ###Custom function which is called three times because there are three facts, and it also has three parameters
+    def drawStats(Line1,Line2,Line3):
+    Label('Guess What?',200,80,font='grenze', size=30, fill='sienna')
+    Label(Line1,200,160,font='grenze', size=30, fill='sienna')
+    Label(Line2,200,200,font='grenze', size=30, fill='sienna')
+    Label(Line3,200,240,font='grenze', size=30, fill='sienna')
+    ###Custom function with parameters that codes the endscreen if the player wins
+    def drawFill(x,y):
+    Rect(0,0,400,400, fill=rgb(255,225,154), border='lightSalmon',borderWidth=20)
+    def drawWinScreen(x,y):
+    app.fall=False
+    WinScreen.visible=True
+    WinScreen.toFront()
+    ###Custom function with parameters that gets called at the end and is technically called multiple times based on how many times you lose the game
+    def drawLoseScreen(x,y):
+    app.fall=False
+    LoseScreen.visible=True
+    LoseScreen.toFront()
+    ###Uses built-in function onMousePress as well as the 'random' attribute to code different responses every time the "stats" button is clicked
+    def onMousePress(mouseX,mouseY):
+    if(stats.contains(mouseX,mouseY)):
+    drawFill(0,0)
+    drawCounter=random.randrange(1,7)
+    if (drawCounter==1 or drawCounter==2):
+    drawStats('2.33 billion people globally','experienced moderate to severe','food insecurity in 2023')
+    if (drawCounter==3 or drawCounter==4):
+    drawStats('Nearly 1 in 11 people','go to sleep hungry ','each night')
+    if (drawCounter==5 or drawCounter==6):
+    drawStats('The two biggest causes','of food insecurity and world','hunger are conflict and poverty')
+    #split in code, upper code isn't directly related to lower code, lower code is the button response to the "Game" button and the splashscreen
+    back.visible=True
+    back.toFront()
+    text3.visible=True
+    text3.toFront()
+    if(back.contains(mouseX,mouseY)):
+    splash.toFront()
+    Tomato.visible=True
+    Tomato.toFront()
+    stats.toFront()
+    game.toFront()
+    counterLabel.visible=False
+    babyTom.centerY=-40
+    app.score=0
+    app.misses=0
+    if(game.contains(mouseX,mouseY)):
+    drawFill(0,0)
+    gameText.visible=True
+    gameText.toFront()
+    bob.visible=True
+    app.fall=True
+    app.score=0
+    app.misses=0
+    counterLabel.value= f'Catch:{app.score}'
+    missLabel.value= f'Miss:{app.misses}'
+    counterLabel.visible=True
+    missLabel.visible=True
+    babyTom.centerY=-40
+    babyTom.centerX=random.randint(20,380)
+    ###Complex Conditional used to code the try again button
+    if(LoseScreen.visible and 150<=mouseX<=250 and 280<=mouseY<=320):
+    LoseScreen.visible=False
+    splash.visible=False
+    gameText.visible=True
+    Tomato.visible=False
+    stats.visible=False
+    game.visible=False
+    app.score=0
+    app.misses=0
+    counterLabel.toFront()
+    counterLabel.value=f'Catch: {app.score}'
+    missLabel.toFront()
+    missLabel.value= f'Miss:{app.misses}'
+    counterLabel.visible=True
+    missLabel.visible=True
+    babyTom.centerY=-40
+    app.fall=True
+    ###use of the built-in function onKeyHold
+    def onKeyHold(keys):
+    if('left' in keys):
+    bob.centerX-=10
+    if('right' in keys):
+    bob.centerX+=10
+    ###Use of the built-in function onStep
+    def onStep():
+    if(app.fall):
+    babyTom.toFront()
+    babyTom.centerY+=10
+    ###This codes whether the player gets a point for catching of a point for missing based on where the falling tomato ends up
+    if(babyTom.hitsShape(bob)):
+    app.score+=1
+    counterLabel.value=f'Catch: {app.score}'
+    babyTom.centerY=-40
+    babyTom.centerX=random.randint(20,380)
+    elif (babyTom.top>400):
+    app.misses+=1
+    missLabel.value=f'Miss:{app.misses}'
+    babyTom.centerY=-40
+    babyTom.centerX=random.randint(20,380)
+    ###This codes the two end screens that pop up based on the number of catches and misses that occur during the game
+    ###and call the custom functions
+    if(app.misses>=3):
+    drawLoseScreen(200,200)
+    if(app.score>=10):
+    drawWinScreen(200,200)
+    app.stop()
+    ###End of Code
+    `
     }
   ];
 
