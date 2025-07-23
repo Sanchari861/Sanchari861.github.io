@@ -522,6 +522,17 @@ fill=gradient('snow','white', start='center'), opacity=90)</pre>
     if 'down' in key:
     cakeBox.centerY+=3
     BoxCake.centerY+=3
+    #This calls the endscreen and the fruits
+    if(marieAntoinette.hits(cakeBox.centerX,cakeBox.centerY)):
+    drawEndGame()
+    drawStrawberry(20,20)
+    drawKiwi(60,20)
+    drawBlueberry(100,20)
+    drawStrawberry(140,20)
+    drawKiwi(180,20)
+    drawStrawberry(220,20)
+    drawCherry(260,20)
+    drawStrawberry(300,20)
     `
     },
     {
