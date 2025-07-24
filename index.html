@@ -564,14 +564,6 @@ fill=gradient('snow','white', start='center'), opacity=90)</pre>
     Label('Click the GAME button to start the game', 200,180, font='grenze', size=18, fill='sienna'),
     visible=True
     )
-    stats=Group(
-    Rect(65,220,60,40, fill=rgb(255,225,154), border='salmon'),
-    Label('STATS',95,240, font='grenze', size=18)
-    )
-    game=Group(
-    Rect(275,220,60,40, fill=rgb(255,225,154), border='salmon'),
-    Label('GAME',305,240, font='grenze', size=18)
-    )
     ###This is the group for the logos, or the main characters
     Tomato=Group(
     Oval(200,300,155,125, fill='red'),
@@ -599,18 +591,14 @@ fill=gradient('snow','white', start='center'), opacity=90)</pre>
     Label(Line1,200,160,font='grenze', size=30, fill='sienna')
     Label(Line2,200,200,font='grenze', size=30, fill='sienna')
     Label(Line3,200,240,font='grenze', size=30, fill='sienna')
-    ###Custom function with parameters that codes the endscreen if the player wins
-    def drawFill(x,y):
-    Rect(0,0,400,400, fill=rgb(255,225,154), border='lightSalmon',borderWidth=20)
-    def drawWinScreen(x,y):
+    ###Custom function with conditionals
+    def drawEndScreen(label, color):
+    Rect(0,0,400,400,fill=color, opacity=90)
+    Label(label,200,180, font='grenze', size=40, fill='sienna')
     app.fall=False
-    WinScreen.visible=True
-    WinScreen.toFront()
-    ###Custom function with parameters that gets called at the end and is technically called multiple times based on how many times you lose the game
-    def drawLoseScreen(x,y):
-    app.fall=False
-    LoseScreen.visible=True
-    LoseScreen.toFront()
+    if app.misses>=3:
+    Rect(200,300,100,40, fill=rgb(255,225,154), align='center')
+    Label('Try Again', 200,300, font='grenze', fill='sienna',size=20)
     ###Uses built-in function onMousePress as well as the 'random' attribute to code different responses every time the "stats" button is clicked
     def onMousePress(mouseX,mouseY):
     if(stats.contains(mouseX,mouseY)):
@@ -642,6 +630,7 @@ fill=gradient('snow','white', start='center'), opacity=90)</pre>
     gameText.visible=True
     gameText.toFront()
     bob.visible=True
+    bob.toFront()
     app.fall=True
     app.score=0
     app.misses=0
@@ -649,10 +638,11 @@ fill=gradient('snow','white', start='center'), opacity=90)</pre>
     missLabel.value= f'Miss:{app.misses}'
     counterLabel.visible=True
     missLabel.visible=True
+    missLabel.toFront()
     babyTom.centerY=-40
     babyTom.centerX=random.randint(20,380)
     ###Complex Conditional used to code the try again button
-    if(LoseScreen.visible and 150<=mouseX<=250 and 280<=mouseY<=320):
+    if(app.misses>=3 and 150<=mouseX<=250 and 280<=mouseY<=320):
     LoseScreen.visible=False
     splash.visible=False
     gameText.visible=True
@@ -680,7 +670,7 @@ fill=gradient('snow','white', start='center'), opacity=90)</pre>
     if(app.fall):
     babyTom.toFront()
     babyTom.centerY+=10
-    ###This codes whether the player gets a point for catching of a point for missing based on where the falling tomato ends up
+    ###This code determines whether the player gets a point for catching or missing based on where the falling tomato ends up
     if(babyTom.hitsShape(bob)):
     app.score+=1
     counterLabel.value=f'Catch: {app.score}'
@@ -692,12 +682,12 @@ fill=gradient('snow','white', start='center'), opacity=90)</pre>
     babyTom.centerY=-40
     babyTom.centerX=random.randint(20,380)
     ###This codes the two end screens that pop up based on the number of catches and misses that occur during the game
-    ###and call the custom functions
-    if(app.misses>=3):
-    drawLoseScreen(200,200)
+    ###and call the custom function
     if(app.score>=10):
-    drawWinScreen(200,200)
-    app.stop()
+        drawEndScreen('YOU WIN!', 'paleGreen')
+        app.stop()
+    if(app.misses>=3):
+        drawEndScreen('YOU LOSE!',rgb(245,163,163))
     ###End of Code
     `
     }
